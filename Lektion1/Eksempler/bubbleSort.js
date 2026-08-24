@@ -46,3 +46,4 @@ return -1; // not found
 
 console.log(bubbleSortBinarySearch(list, 9)); // => index of 9 after sorting
 console.log(bubbleSortBinarySearch(list, 100)); // => -1
+console.log(bubbleSortBinarySearch(list2, "lars")); 
