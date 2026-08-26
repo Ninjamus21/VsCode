@@ -1,0 +1,72 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#container {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 60px repeat(4, 1fr);
+    gap: 5px;
+
+    grid-template-areas:
+            "t t t t"
+            "a d d d"
+            "c d d d"
+            "c e e e"
+            ". f f f";
+}
+
+.item {
+    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.item table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#title {
+    grid-area: t;
+    margin: 0;
+}
+
+#id-a {
+    grid-area: a;
+}
+
+#id-c {
+    grid-area: c;
+}
+
+#id-d {
+    grid-area: d;
+}
+
+#id-e {
+    grid-area: e;
+}
+
+#id-f {
+    grid-area: f;
+}

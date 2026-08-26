@@ -1,0 +1,9 @@
+.greentext {
+    color: green;
+}
+
+.item {
+    border: 1px solid blue;
+    background-color: lightgray;
+    border-collapse: collapse;
+}
