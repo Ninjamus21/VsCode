@@ -5,3 +5,6 @@ function antalOrd(str) {
     let ord = str.split(" ");
     return ord.length;
 }
+
+// skal lave senere
+// antal af forskellige ord i en sætning
