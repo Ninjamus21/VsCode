@@ -13,3 +13,8 @@ table, td {
 td:nth-child(2){
     text-align: right;
 }
+
+.tall {
+    font-weight: bold;
+    color: blue;
+}
