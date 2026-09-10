@@ -48,5 +48,8 @@ let personerList = document.querySelector("#personer");
 personerList.onclick = (event) => {
     let clickedPerson = event.target.innerText;
     let person = personer.find(person => clickedPerson.includes(person.navn));
-    alert(person.navn + ' (' + person.alder + ' år)');
+    if (person) {
+        alert(person.navn + ' (' + person.alder + ' år)');
+    }
 }
+
