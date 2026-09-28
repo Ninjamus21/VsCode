@@ -6,13 +6,15 @@
         <script src="personer.js" defer></script>
     </head>
     <body>
-        <input type="text"  placeholder="Indtast navn">
-        <input type="number" placeholder="Indtast alder">
+        <input id="navn" type="text"  placeholder="Indtast navn">
+        <input id="alder" type="number" placeholder="Indtast alder">
         <button id="tilføj">Tilføj</button>
         <button id="ryd">Ryd</button>
         <button id="search">Søg</button>
         <input id="søg" type="text" placeholder="Søg efter navn">
-        <button id="slet">Slet</button>
+        <button id="slet">Slet</button><br>
+        <label>Valgt person: </label>
+        <label id="selectedPerson">navn (alder år)</label>
         <ul id="personer"></ul>
     </body>
 </html>
