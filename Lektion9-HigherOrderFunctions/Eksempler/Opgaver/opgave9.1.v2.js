@@ -42,7 +42,7 @@ console.log("Personen med den mindste alder er: " + minAgePerson.firstName + " "
 
 // modifiser personer så de får et id felt
 persons = persons.map((person, index) => ({ ...person, id: index + 1 }));
-persons.forEach(f => console.log(f.firstName + " " + f.lastName + " has id: " + f.id));
+console.table(persons);
 
 // lave en ny array hvor alle personer navne er og er komma separeret
 let namesArray = persons.map(person => person.firstName + " " + person.lastName).join(", ");

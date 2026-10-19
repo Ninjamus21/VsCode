@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Opgave 11.2</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 2rem; color: #222; background: #fff; }
+        table { border-collapse: collapse; margin-bottom: 2rem; }
+        th, td { border: 1px solid #ddd; padding: 6px 10px; text-align: left; vertical-align: top; }
+        th { background: #f4f4f4; }
+        #brugere tbody tr { cursor: pointer; }
+        #brugere tbody tr:hover { background: #f9f9f9; }
+        #brugere tbody tr.valgt { background: #eee; }
+    </style>
+</head>
+<body>
+    <h1>Opgave 11.2</h1>
+
+    <h2>Users</h2>
+    <table id="brugere">
+        <thead>
+            <tr><th>Id</th><th>Navn</th><th>Catchphrase</th></tr>
+        </thead>
+        <tbody id="liste"></tbody>
+    </table>
+
+    <h2 id="postTitel">Posts</h2>
+    <table id="posts">
+        <thead>
+            <tr><th>Id</th><th>Titel</th><th>Tekst</th></tr>
+        </thead>
+        <tbody id="postListe"></tbody>
+    </table>
+
+    <script src="opgave11.2.js"></script>
+</body>
+</html>
