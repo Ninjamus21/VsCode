@@ -2,85 +2,35 @@ doctype html
 html
     head
         meta(charset='utf-8')
-        title Tekster
+        title Shop
     body
-        h1 Tekster
+        h1 Produkter
         table
-            thead
+            each p in produkter
                 tr
-                    th Tekst
-                    th Pris
-                    th ID
-                    th
-            tbody
-                each product in tekster
-                    tr
-                        td= product.tekst
-                        td= product.pris
-                        td= product.id
-                        td
-                            button(onclick='buy("' + product.id + '")') Vælg
+                    td= p.navn
+                    td= p.pris
+                    td
+                        button(onclick='clickfunction("' + p.id + '")') Køb
 
-        label(for='tekst') Skriv en tekst:
-        input(type='text', id='tekst', name='tekst')
-        label(for='pris') Skriv en pris:
-        input(type='text', id='pris', name='pris')
-        button(type='button', onclick='tilfoej()') Tilføj
+        a(href='/kurv') Se kurv
 
         script.
-            async function tilfoej() {
-                const tekst = document.querySelector("#tekst").value;
-                const pris = document.querySelector("#pris").value;
-                const respons = await fetch("/tilfoej", {
-                    method: "POST",
-                    body: JSON.stringify({ tekst, pris }),
-                    headers: { "Content-Type": "application/json" }
-                });
-
-                if (!respons.ok) {
-                    alert("Teksten kunne ikke tilføjes");
-                    return;
-                }
-
-                window.location.href = "/index";
-            }
-
             async function post(url, objekt) {
                 const respons = await fetch(url, {
-                    method: "POST",
+                    method: 'POST',
                     body: JSON.stringify(objekt),
                     headers: { 'Content-Type': 'application/json' }
                 });
-                if (respons.status !== 201)
-                    throw new Error(respons.status);
+                if (respons.status !== 201) throw new Error(respons.status);
                 return await respons.text();
             }
 
             let clickfunction = async (id) => {
                 try {
-                    await post("/produkt", { id });
-                    window.location.href = "/index";
+                    await post('/buy', { id });
+                    window.location.href = '/index';
                 } catch (e) {
-                    alert("Fejl: " + e.message);
+                    alert('Fejl: ' + e.message);
                 }
             };
-
-            let buy = async (id) => {
-                try {
-            app.post('/buy', (req, res) => {
-            const id = parseInt(req.body.id);
-            const produkt = tekster.find(p => p.id === id);
-
-            if (!produkt) {
-                return res.status(404).send('Produktet blev ikke fundet');
-            }
-
-            console.log('Købt:', produkt);
-            res.status(201).send('OK');
-            } catch (e) {
-                alert("Fejl: " + e.message);
-            });
-            }
-            }
-
-            

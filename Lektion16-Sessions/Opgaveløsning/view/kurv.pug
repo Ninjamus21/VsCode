@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        title Kurv
+    body
+        h1 Kurv
+        if kurv.linjer.length === 0
+            p Kurven er tom
+        else
+            table
+                each l in kurv.linjer
+                    tr
+                        td= l.navn
+                        td #{l.antal} stk
+                        td= l.sum
+            p Total: #{kurv.total}
+        a(href='/index') Tilbage

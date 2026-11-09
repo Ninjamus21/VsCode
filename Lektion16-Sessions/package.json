@@ -4,7 +4,8 @@
     "start": "node Opgaveløsning/shopApp.js"
   },
   "dependencies": {
-    "pug": "^3.0.4",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-session": "^1.19.0",
+    "pug": "^3.0.4"
   }
 }
