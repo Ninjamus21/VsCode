@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title Brugere
+  body
+    h1 url er #{url}
+    if users
+      h1 Mine brugere
+      p Her er en liste over mine brugere
+      ul
+        each user in users
+          li #{user.name} - #{user.username}
+    else if results
+      h1 Tilfældige brugere
+      p Her er en liste over tilfældige brugere
+      ul
+        each result in results
+          li #{result.gender} - #{result.name.first} #{result.name.last} - #{result.email}
+    else if resultsNationality
+        h1 Tilfældige brugere med nationalitet
+        p Her er #{resultsNationality.length} tilfældige brugere med nationalitet
+        ul
+          each result in resultsNationality
+            li #{result.nat} - #{result.gender} - #{result.name.first} #{result.name.last} - #{result.email}
+
+    else
+      p Ingen data

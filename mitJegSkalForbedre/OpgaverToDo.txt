@@ -1,0 +1,72 @@
+Ja. Du lærer mest ved at skrive det selv, så jeg giver dig en kort grundpakke pr. emne og øvelser uden facit. Send det, du laver, så får jeg kritik på det.
+
+1. innerHTML, textContent og createElement
+javascript
+el.textContent = "tekst";                 // ren tekst, sikker
+el.innerHTML = "<b>fed</b>";              // tolkes som HTML, usikker med ekstern data
+const li = document.createElement("li");  // opret element i hukommelsen
+ul.appendChild(li);                       // først her kommer det på siden
+
+Tommelfinger: textContent til tekst, createElement når du skal hænge noget på elementet (fx en klik-lytter), innerHTML til hurtige skabeloner.
+
+Fælde: el.innerHTML += "..." bygger hele elementet om hver gang og dræber klik-lyttere på de gamle børn.
+
+Øvelse 1: Lav en liste over tre ting med både innerHTML og createElement. Forklar, hvad forskellen er, hvis en af tingene indeholder <b>.
+
+2. Tabeller
+
+To måder at bygge en række på:
+
+javascript
+// A: createElement
+const tr = document.createElement("tr");
+for (const v of [user.id, user.name]) {
+    const td = document.createElement("td");
+    td.textContent = v;
+    tr.appendChild(td);
+}
+
+// B: template literal + map
+tbody.innerHTML = users.map(u => `<tr><td>${u.id}</td><td>${u.name}</td></tr>`).join("");
+
+Øvelse 2: Lav en generisk tabel-funktion byggTabel(data, kolonner), hvor kolonner er ["id", "name"]. Den skal virke på både users og posts uden at ændre koden.
+
+3. Promises
+javascript
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("færdig"), 1000);
+});
+p.then(v => console.log(v)).catch(e => console.log(e)).finally(() => console.log("slut"));
+
+// parallelt
+const [users, posts] = await Promise.all([get(userUrl), get(postUrl + 1)]);
+
+Husk: await i en løkke kører kald efter hinanden. Promise.all kører dem samtidig.
+
+Øvelse 3: Lav din egen vent(ms), der returnerer et promise. Brug den til at skrive “1”, “2”, “3” i console med ét sekunds mellemrum, først med .then, så med async/await.
+
+4. Event listeners
+javascript
+knap.addEventListener("click", (e) => { console.log(e.target); });
+form.addEventListener("submit", (e) => { e.preventDefault(); });
+
+Event delegation: i stedet for én lytter pr. række, sætter du én på tbody og bruger e.target.closest("tr"). Det virker også på rækker, du tilføjer senere.
+
+Øvelse 4: Gør din user-tabel fra opgave 11.2 om til event delegation: én lytter på tbody, og user.id ligger i tr.dataset.id.
+
+5. Syntax du bør have i fingrene
+const/let (aldrig var), === frem for ==.
+Pilefunktioner: x => x * 2.
+Template literals: `Hej ${navn}`.
+Destructuring: const { id, name } = user;
+map, filter, find, forEach i stedet for løkker, når du transformerer lister.
+Optional chaining: user.company?.catchPhrase.
+
+Øvelse 5: Givet users-arrayet: lav (a) en liste af kun navne, (b) kun dem hvis id er lige, (c) den user der hedder “Clementine Bauch”, alt uden for-løkke.
+
+Rækkefølge
+Øvelse 5 (syntaks), fordi resten bygger på den.
+Øvelse 1 og 2 (DOM og tabeller).
+Øvelse 4 (events).
+Øvelse 3 (promises).
+Comments-opgaven fra før, som samler det hele.

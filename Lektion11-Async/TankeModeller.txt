@@ -1,0 +1,35 @@
+Tankemodeller
+
+1. Tre lag: hent, vis, forbind. Hver funktion hører til ét af dem. Hvis en funktion både henter og tegner, så del den. Det er den vigtigste vane i hele opgaven.
+
+2. Data flyder i én retning. Netværk → JSON → funktion → DOM. Før du skriver kode, så tegn pilen på papir for hvert trin: “Hvad har jeg? Hvad skal jeg have?”
+
+3. Begivenheder er bare “hvis dette, så kald den”. Klik-lytteren er ikke magi. Den er hvis klik → kald hentPosts. Du kobler den på samme sted, hvor du alligevel laver rækken, fordi du dér har user i hånden.
+
+4. await betyder “vent her, men bloker ikke alt andet”. Læs const x = await get(...) som “giv mig x, når den er klar”. Alt efter linjen kører først derefter.
+
+5. Fejl hører til der, hvor de opstår. Hvert netværkskald får sin egen try/catch og sin egen visning.
+
+Opskrift til et lignende projekt
+Åbn URL’en i browseren og kig på data: Er det et array eller et objekt? Hvilke felter? Hvilke er nested?
+Skitsér HTML’en: hvilke tabeller/lister, og hvilke id’er.
+Skriv get() og test med console.log(data).
+Skriv vis... til første tabel, og test.
+Tilføj klik, og test med console.log(user.id) før du henter noget.
+Skriv det næste kald og den næste visning.
+Fejlhåndtering til sidst.
+
+--------------------------------
+
+Funktionerne, én for én
+
+get(url) er din eneste netværksfunktion. Den henter, tjekker status og returnerer JSON. Den kender ikke til HTML eller users, og derfor kan den genbruges til alt.
+
+visData(data) tager data og bygger tabelrækker. Array.isArray-linjen gør, at den også virker på ét enkelt objekt. Du bruger den ikke her, så den kan fjernes.
+
+visPosts(user, posts) gør det samme for posts og sætter overskriften.
+
+visFejl / visPostFejl skriver fejl i den rigtige tabel. Der er to, fordi en fejl i posts ikke skal overskrive din user-liste.
+
+hentmedasync() og hentPosts(userId) er “limen”: de henter data og sender det videre til visning.
+

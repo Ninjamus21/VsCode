@@ -1,0 +1,58 @@
+Her er det, jeg ville skrive ned, sorteret efter hvor sandsynligt det er at blive spurgt om det.
+
+1. Begreber du skal kunne forklare med egne ord
+Synkron vs. asynkron: Netværkskald tager tid, og JS blokerer ikke imens, men går videre og vender tilbage, når svaret er klar.
+Promise: Et løfte om en værdi senere. Tre tilstande: pending, fulfilled, rejected.
+.then() / .catch() vs. async / await: Samme ting, to skrivemåder. await kan kun bruges i en async-funktion og pauser den funktion, ikke hele browseren.
+async-funktioner returnerer altid et promise.
+try/catch med await svarer til .catch() på en promise-kæde.
+Closure: Klik-funktionen “husker” user fra løkken.
+Event listener: Funktionen kører først ved hændelsen, ikke når den bliver oprettet. Returnere et promise, der er pending, indtil hændelsen sker.
+
+---
+
+2. Fælden, der giver fejl i praksis
+
+Skriv disse ned som “ting jeg har lavet forkert”:
+
+fetch() kaster ikke fejl ved 404. Derfor tjekker get() respons.status, og derfor kaster den selv en Error.
+fetch() afviser kun ved netværksfejl eller ugyldig URL (fx httpz://), og det giver en TypeError.
+Case sensitivitet: catchPhrase, userId.
+Scriptet skal stå efter elementerne i HTML’en, ellers er getElementById null.
+document findes kun i browseren, ikke i Node.
+Funktionsnavne og id’er skal matche præcist (visBruger vs. visData, userList vs. liste).
+Glemmer du at kalde funktionen, sker der ingenting.
+
+---
+
+3. Mønstret (det vigtigste)
+se evt Rækkefølge.png for en visuel forklaring. Skriv det ned som en sætning, du kan huske:
+
+Skriv det som et skema, du kan tegne fra hukommelsen:
+
+trigger → async-funktion (try/catch) → get(url) → vis-funktion → DOM
+
+Og de tre lag: hent (get), vis (vis...), forbind (hent... og event listeners).
+
+4. Kode, du skal kunne skrive uden at kigge
+get(url) med statustjek.
+Både .then/.catch- og async/await-version af samme kald.
+Loop der bygger tabelrækker med createElement, innerHTML og appendChild.
+addEventListener("click", ...) inde i løkken.
+Et kald til to afhængige data (user, så posts).
+
+
+5. Øvelser, der tester forståelsen
+Skriv opgave 11.2 fra bunden på 20 minutter uden at kigge.
+Lav comments ved klik på en post.
+Skriv get() om med .then() i stedet for await.
+Forklar, hvad der sker, hvis man fjerner await foran get(...). Prøv det og se, hvad der står i tabellen.
+Hvorfor kører console.log efter et await først bagefter?
+
+6. Tre gode eksamensspørgsmål at øve svar på
+“Hvorfor bruger man promises/async frem for callbacks?”
+“Hvad er forskellen på, at serveren svarer 404, og at fetch afvises?”
+“Hvad sker der i hvilken rækkefølge, når siden åbnes og man klikker på en user?” (brug tegningen)
+Praktisk format
+
+Lav én side med tre dele: mønsteret (skemaet), fælder (listen i punkt 2) og din egen get() + ét komplet eksempel. Skriv den selv, og tilføj fælder, når du støder på nye. Det er dem, du alligevel glemmer til eksamen.

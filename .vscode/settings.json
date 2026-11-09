@@ -1,5 +1,1 @@
-{
-  "mochaExplorer.files": "test/**/*.test.js",
-  "mochaExplorer.cwd": "${workspaceFolder}",
-  "mochaExplorer.nodePath": "node_modules/mocha"
-}
+{"type": "module"}
